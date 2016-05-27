@@ -4,7 +4,7 @@
       "bind": "{{ default .Env.CLIENT_BIND "127.0.0.0" }}"
     },
     "name": "{{ default .Env.HOSTNAME .Env.CLIENT_NAME }}",
-    "address": "{{ default .CLIENT_ADDRESS "127.0.0.0" }}",
+    "address": "{{ default .Env.CLIENT_ADDRESS "127.0.0.0" }}",
     {{ if .Env.CLIENT_SUBSCRIPTIONS }}"subscriptions": [{{ range $key, $value := split .Env.CLIENT_SUBSCRIPTIONS "," }}
       "{{ $value }}"{{if eq $key 0}},{{end}}{{end}}
     ],{{end}}
