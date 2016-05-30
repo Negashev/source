@@ -5,6 +5,8 @@
     "mail_to": "{{ default .Env.MAILER_TO "monitor@example.com" }}",
     "smtp_address": "{{ default .Env.MAILER_ADDRESS "smtp.yandex.ru" }}",
     "smtp_port": "{{ default .Env.MAILER_PORT "465" }}",
+    "smtp_username": "{{ default .Env.MAILER_FROM "user" }}",
+    "smtp_password": "{{ default .Env.MAILER_PASS "passw0rd" }}",
     "smtp_domain": "{{ default .Env.MAILER_DOMAIN "yandex.ru" }}"
   }
 }
