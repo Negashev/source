@@ -1,0 +1,10 @@
+{
+  "mailer": {
+    "admin_gui": "{{ default .Env.MAILER_GUI "http://admin.example.com:8080/" }}",
+    "mail_from": "{{ default .Env.MAILER_FROM "sensu@example.com" }}",
+    "mail_to": "{{ default .Env.MAILER_TO "monitor@example.com" }}",
+    "smtp_address": "{{ default .Env.MAILER_ADDRESS "smtp.yandex.ru" }}",
+    "smtp_port": "{{ default .Env.MAILER_PORT "465" }}",
+    "smtp_domain": "{{ default .Env.MAILER_DOMAIN "yandex.ru" }}"
+  }
+}
