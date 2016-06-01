@@ -21,8 +21,9 @@ filter {
 }
 output {
     elasticsearch {
-  host => "elasticsearch"
-  protocol => "http"
-  index => "{{ .Env.INDEX }}"
-  workers => "16"
+    host => "elasticsearch"
+    protocol => "http"
+    index => "{{ .Env.INDEX }}"
+    workers => "16"
+  }
 }
