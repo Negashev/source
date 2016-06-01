@@ -22,7 +22,5 @@ output {
   elasticsearch {
     hosts => ["es"]
     index => "{{ .Env.INDEX }}"
-    workers => 5
-    flush_size => 10000
   }
 }
