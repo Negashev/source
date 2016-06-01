@@ -2,7 +2,7 @@ input {
   redis {
     host => "redis"
     port => 6379
-    threads => 800
+    threads => 16
     key => "logstash"
     data_type => "list"
     codec => json
