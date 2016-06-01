@@ -2,7 +2,7 @@ input {
   redis {
     host => "redis"
     port => 6379
-    threads => 10
+    threads => 5
     key => "logstash"
     data_type => "list"
     codec => json
@@ -20,8 +20,9 @@ filter {
   }
 }
 output {
-  elasticsearch {
-    hosts => ["es"]
-    index => "{{ .Env.INDEX }}"
-  }
+    elasticsearch {
+  host => "elasticsearch"
+  protocol => "http"
+  index => "{{ .Env.INDEX }}"
+  workers => "16"
 }
