@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "check_disk_usage": {
+      "command": "check-disk-usege.rb",
+      "handlers": [
+        "mail"
+      ],
+      "subscribers": [
+        "all"
+      ],
+      "interval": 30,
+      "notification": "Disk Check failed",
+      "occurrences": 5
+    }
+  }
+}
