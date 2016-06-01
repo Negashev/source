@@ -2,10 +2,11 @@ input {
   redis {
     host => "redis"
     port => 6379
-    threads => 5
+    threads => 10
     key => "logstash"
     data_type => "list"
     codec => json
+    batch_count => 10000
   }
 }
 filter {
