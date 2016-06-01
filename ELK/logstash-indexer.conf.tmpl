@@ -8,13 +8,16 @@ input {
     codec => json
   }
 }
-{{ if .Env.GROK }}
 filter {
+  {{ if .Env.GROK }}
   grok {
     match => { "message" => "{{ .Env.GROK }}" }
   }
+  {{end}}
+  mutate {
+    remove_field => ["message", "@version", "@timestamp", "host"]
+  }
 }
-{{end}}
 output {
   elasticsearch {
     hosts => ["es"]
