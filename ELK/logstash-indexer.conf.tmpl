@@ -15,7 +15,7 @@ filter {
   }
   {{end}}
   mutate {
-    remove_field => ["message", "@version", "@timestamp", "host"]
+    remove_field => ["message", "@version", "host"]
   }
 }
 output {
