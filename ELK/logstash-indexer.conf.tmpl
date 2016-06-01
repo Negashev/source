@@ -1,0 +1,24 @@
+input {
+  redis {
+    host => "redis"
+    port => 6379
+    threads => 800
+    key => "logstash"
+    data_type => "list"
+    codec => json
+  }
+}
+{{ if .Env.GROK }}
+filter {
+  grok {
+    match => { "message" => "{{ .Env.GROK }}" }
+  }
+}
+{{end}}
+output {
+  elasticsearch {
+    hosts => ["es"]
+    index => "{{ .Env.INDEX }}"
+    workers => 16
+  }
+}
