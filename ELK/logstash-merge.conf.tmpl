@@ -1,6 +1,6 @@
 input {
   elasticsearch {
-    hosts => "elasticsearch"
+    hosts => ["elasticsearch"]
     index => "{{ .Env.SOURCE }}"
     query => "*"
     size => 500
