@@ -10,8 +10,8 @@ input {
 }
 output {
   elasticsearch {
-    hosts => "elasticsearch"
     index => "{{ .Env.MERGE }}"
-    workers => "16"
+    document_type => "%{[@metadata][_type]}"
+    document_id => "%{[@metadata][_id]}"
   }
 }
