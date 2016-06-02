@@ -2,8 +2,7 @@ input {
   elasticsearch {
     hosts => ["elasticsearch"]
     index => "{{ .Env.SOURCE }}"
-    size => 500
-    scroll => "5m"
+    size => 100000
     docinfo => true
   }
 }
