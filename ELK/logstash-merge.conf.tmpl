@@ -2,7 +2,7 @@ input {
   elasticsearch {
     hosts => ["elasticsearch"]
     index => "{{ .Env.SOURCE }}"
-    size => 50000
+    size => 10000
     docinfo => true
   }
 }
@@ -12,5 +12,6 @@ output {
     index => "{{ .Env.MERGE }}"
     document_type => "%{[@metadata][_type]}"
     document_id => "%{[@metadata][_id]}"
+    workers => 16
   }
 }
