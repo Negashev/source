@@ -2,7 +2,7 @@ input {
   elasticsearch {
     hosts => ["elasticsearch"]
     index => "{{ .Env.SOURCE }}"
-    size => 100000
+    size => 50000
     docinfo => true
   }
 }
