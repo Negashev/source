@@ -7,4 +7,4 @@ network.host: "_site_"
 bootstrap.mlockall: true
 discovery.zen.ping.multicast.enabled: false
 
-discovery.zen.ping.unicast.hosts: ["es-master"]
+discovery.zen.ping.unicast.hosts: ["{{ default .Env.CLUSTER_MASTER "es-master" }}"]
