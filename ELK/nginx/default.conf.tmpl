@@ -40,6 +40,7 @@ http {
     expires -1;
   
     location / {
+      rewrite ^/(.*)$ /$1 break;
       proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }}/_plugin/kopf;
     }
   }
