@@ -1,48 +1,25 @@
-daemon off;
-user www-data;
-worker_processes 4;
-pid /run/nginx.pid;
+server {
+  listen 80;
 
-events {
-  worker_connections 1024;
-}
+  server_name {{ default .Env.KOPF_SERVER_NAME "es.dev" }};
 
-http {
-  sendfile on;
-  tcp_nopush on;
-  tcp_nodelay on;
-  keepalive_timeout 65;
-  types_hash_max_size 2048;
+  satisfy any;
 
-  default_type application/octet-stream;
+  {{ if .Env.KOPF_BASIC_AUTH_LOGIN }}
+  auth_basic "Access restricted";
+  auth_basic_user_file /etc/nginx/kopf.htpasswd;
+  {{ end }}
 
-  access_log /dev/stdout;
-  error_log /dev/stderr;
+  {{ if .Env.KOPF_NGINX_INCLUDE_FILE }}
+  include {{ .Env.KOPF_NGINX_INCLUDE_FILE }};
+  {{ end }}
 
-  server {
-    listen 80;
+  # suppress passing basic auth to upstreams
+  proxy_set_header Authorization "";
 
-    server_name {{ default .Env.KOPF_SERVER_NAME "es.dev" }};
+  # everybody loves caching bugs after upgrade
+  expires -1;
 
-    satisfy any;
-
-    {{ if .Env.KOPF_BASIC_AUTH_LOGIN }}
-    auth_basic "Access restricted";
-    auth_basic_user_file /etc/nginx/kopf.htpasswd;
-    {{ end }}
-
-    {{ if .Env.KOPF_NGINX_INCLUDE_FILE }}
-    include {{ .Env.KOPF_NGINX_INCLUDE_FILE }};
-    {{ end }}
-
-    # suppress passing basic auth to upstreams
-    proxy_set_header Authorization "";
-
-    # everybody loves caching bugs after upgrade
-    expires -1;
-
-    location / {
-      proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }}/_plugin/kopf$request_uri;
-    }
+  location / {
+    proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }}/_plugin/kopf$request_uri;
   }
-}
