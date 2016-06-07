@@ -1,5 +1,5 @@
 cluster.name: "{{ default .Env.CLUSTER_NAME "es" }}"
-node.name: "{{ .Env.HOSTNAME }}"
+node.name: ${HOSTNAME}
 node.data: "true"
 node.master: "false"
 http.enabled: "false"
