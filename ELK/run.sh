@@ -9,8 +9,9 @@ while [ ! -f "/usr/share/elasticsearch/config/elasticsearch.yml" ]; do
 done
 
 if [ -f "$PLUGIN_TXT" ]; then
-    for plugin in $(<"${PLUGIN_TXT}"); do
-        /usr/share/elasticsearch/bin/plugin --install $plugin
+    for plugin in `cat "$PLUGIN_TXT"`
+    do
+        /usr/share/elasticsearch/bin/plugin install $plugin
     done
 fi
 
