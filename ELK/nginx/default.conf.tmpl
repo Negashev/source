@@ -44,9 +44,9 @@ http {
       rewrite ^/es(.*) /$1 break;
     }
   
-    location ~ ^/kopf/.*$ {
+    location ~ ^/.*$ {
       proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }};
-      rewrite ^/kopf/(.*) /_plugin/kopf/$1 break;
+      rewrite ^/(.*) /_plugin/kopf/$1 break;
     }
   }
 }
