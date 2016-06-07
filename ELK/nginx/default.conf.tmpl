@@ -40,7 +40,7 @@ http {
     expires -1;
   
     location / {
-      proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }}/_plugin/kopf$request_uri;
+      proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }}/_plugin/kopf;
     }
   }
 }
