@@ -11,6 +11,7 @@ done
 if [ -f "$PLUGIN_TXT" ]; then
     for plugin in `cat "$PLUGIN_TXT"`
     do
+        /usr/share/elasticsearch/bin/plugin remove $plugin
         /usr/share/elasticsearch/bin/plugin install $plugin
     done
 fi
