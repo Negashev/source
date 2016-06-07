@@ -38,14 +38,15 @@ http {
   
     # everybody loves caching bugs after upgrade
     expires -1;
+    
     location ~ ^/es.*$ {
       proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }};
       rewrite ^/es(.*) /$1 break;
     }
-    
-    location / {
+  
+    location ~ ^/kopf/.*$ {
       proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }};
-      rewrite ^/(.*) /_plugin/kopf/$1 break;
+      rewrite ^/kopf/(.*) /_plugin/kopf/$1 break;
     }
   }
 }
