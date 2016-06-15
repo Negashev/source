@@ -9,11 +9,5 @@ output {
     host => "redis"
     data_type => "list"
     key => "logstash"
-    congestion_interval => 1
-    congestion_threshold => 20000000
-    workers => 16
-    batch => true
-    batch_events => 500
-    batch_timeout => 5
   }
 }
