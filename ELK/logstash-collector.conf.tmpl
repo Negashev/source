@@ -9,6 +9,9 @@ output {
     host => "redis"
     data_type => "list"
     key => "logstash"
-    workers => 8
+    workers => 16
+    batch => true
+    batch_events => 100
+    batch_timeout => 5
   }
 }
