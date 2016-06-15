@@ -11,7 +11,7 @@ output {
     key => "logstash"
     workers => 16
     batch => true
-    batch_events => 100
+    batch_events => 1000
     batch_timeout => 5
   }
 }
