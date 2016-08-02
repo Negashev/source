@@ -5,8 +5,8 @@ input {
 }
 filter {
   grok {
-    patterns_dir => ["./pattern"]
-    match => { "message" => "%{FJY_1}" }
+    patterns_dir => ["/config/pattern/pattern"]
+    match => { "message" => "%{FJY_BY_NEGASH}" }
   }
 }
 output {
