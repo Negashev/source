@@ -4,10 +4,8 @@ input {
   }
 }
 filter {
-  if [path] =~ "dht2" {
-     csv {
-      separator => "\t"
-     }
+  csv {
+    separator => "  "
   }
 }
 output {
