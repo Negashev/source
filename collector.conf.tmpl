@@ -4,8 +4,10 @@ input {
   }
 }
 filter {
-  csv {
-    separator => "    "
+  csv {csv {
+      columns => ["ts","uid","orig_h","orig_p","resp_h","resp_p","proto","service"]
+      separator => "	"
+    }
   }
 }
 output {
