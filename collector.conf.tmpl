@@ -4,11 +4,8 @@ input {
   }
 }
 filter {
-  grok {
-    patterns_dir => ["/config/pattern"]
-    csv {
-        separator => "${TAB_EXPLODE}"
-    }
+  csv {
+    separator => "    "
   }
 }
 output {
