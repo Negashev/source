@@ -6,7 +6,9 @@ input {
 filter {
   grok {
     patterns_dir => ["/config/pattern"]
-    match => { "message" => "%{FJY_BY_NEGASH}" }
+    csv {
+        separator => "${TAB_EXPLODE}"
+    }
   }
 }
 output {
