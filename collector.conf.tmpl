@@ -4,8 +4,9 @@ input {
   }
 }
 filter {
-  csv {
-    separator => "  "
+  grok {
+    patterns_dir => ["./pattern"]
+    match => { "message" => "%{FJY_1}" }
   }
 }
 output {
