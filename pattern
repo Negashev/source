@@ -1,1 +1,1 @@
-FJY_BY_NEGASH %{TEXT:c1}\t%{TEXT:c2}\t%{TEXT:c3}\t%{TEXT:c4}\t%{TEXT:c5}\t%{TEXT:c6}\t%{TEXT:c7}\t%{TEXT:c8}
+FJY_BY_NEGASH %{WORD:c1}\t%{WORD:c2}\t%{WORD:c3}\t%{WORD:c4}\t%{WORD:c5}\t%{WORD:c6}\t%{WORD:c7}\t%{WORD:c8}
