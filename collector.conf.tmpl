@@ -5,7 +5,7 @@ input {
 }
 filter {
   grok {
-    pattern => "%{TEXT:1}\t%{TEXT:2}\t%{TEXT:3}\t%{TEXT:4}\t%{TEXT:5}\t%{TEXT:6}\t%{TEXT:7}\t%{TEXT:8}"
+    pattern => "%{TEXT:c1}\t%{TEXT:c2}\t%{TEXT:c3}\t%{TEXT:c4}\t%{TEXT:c5}\t%{TEXT:c6}\t%{TEXT:c7}\t%{TEXT:c8}"
   }
 }
 output {
