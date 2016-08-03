@@ -1,7 +1,6 @@
 input {
   file {
     path => "/load/*/*"
-    start_position => "beginning"
   }
 }
 filter {
@@ -23,7 +22,7 @@ output {
     key => "logstash"
     workers => 16
     batch => true
-    batch_events => 1000
+    batch_events => 10000
     batch_timeout => 5
   }
 }
