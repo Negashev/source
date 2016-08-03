@@ -11,7 +11,7 @@ input {
 }
 output {
   file {
-    message_format => "%{[column1]}\t%{[column2]}\t%{[column3]}\t%{[column4]}\t%{[column5]}\t%{[column6]}\t%{[column8]}"
+    message_format => "%{[column1]}  %{[column2]}  %{[column3]}  %{[column4]}  %{[column5]}  %{[column6]}  %{[column8]}"
     path => "/load/%{filename}"
   }
 }
