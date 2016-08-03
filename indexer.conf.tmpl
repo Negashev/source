@@ -4,7 +4,7 @@ input {
     durable => true
     key => "logstash"
     exchange => "logstash-rabbitmq"
-    threads => 3
+    threads => 4
     prefetch_count => 50
     host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"
     user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"
@@ -13,6 +13,7 @@ input {
 }
 output {
   file {
+    message_format => "%{[column1]}\t%{[column2]}"
     path => "/tmp/%{host}"
   }
 }
