@@ -25,7 +25,7 @@ output {
       host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"
       user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"
       password => "{{ default .Env.RABBITMQ_PASS "passw0rd" }}"
-      workers => 4
+      workers => 8
       durable => true
       persistent => true
   }
