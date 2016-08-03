@@ -1,0 +1,18 @@
+input {
+  rabbitmq {
+    queue => "logstash-queue"
+    durable => true
+    key => "logstash"
+    exchange => "logstash-rabbitmq"
+    threads => 3
+    prefetch_count => 50
+    host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"
+    user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"
+    password => "{{ default .Env.RABBITMQ_PASS "passw0rd" }}"
+  }
+}
+output {
+  file {
+    path => "%{path}"
+  }
+}
