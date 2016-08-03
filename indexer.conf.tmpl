@@ -12,6 +12,6 @@ input {
 output {
   file {
     message_format => "%{[column1]}\t%{[column2]}"
-    path => "/tmp/%{filename}"
+    path => "/load/%{filename}"
   }
 }
