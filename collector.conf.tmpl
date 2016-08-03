@@ -1,0 +1,28 @@
+input {
+  file {
+    path => "/load/*/*"
+    start_position => "beginning"
+  }
+}
+filter {
+  csv {
+    separator => "	"
+  }
+  mutate
+  {
+    remove_field => [ "message", "@version"]
+  }
+}
+output {
+  rabbitmq {
+      exchange => "logstash-rabbitmq"
+      exchange_type => "direct"
+      key => "logstash"
+      host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"
+      user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"
+      password => "{{ default .Env.RABBITMQ_PASS "passw0rd" }}"
+      workers => 4
+      durable => true
+      persistent => true
+  }
+}
