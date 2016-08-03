@@ -18,15 +18,4 @@ filter {
 }
 output {
   stdout { codec => rubydebug }
-  rabbitmq {
-      exchange => "logstash-rabbitmq"
-      exchange_type => "direct"
-      key => "logstash"
-      host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"
-      user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"
-      password => "{{ default .Env.RABBITMQ_PASS "passw0rd" }}"
-      workers => 8
-      durable => true
-      persistent => true
-  }
 }
