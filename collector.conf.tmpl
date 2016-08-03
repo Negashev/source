@@ -12,8 +12,12 @@ filter {
   {
     remove_field => [ "message", "@version"]
   }
+  grok {
+    match => ["path","%{GREEDYDATA}/%{GREEDYDATA:filename}"]
+  }
 }
 output {
+  stdout { codec => rubydebug }
   rabbitmq {
       exchange => "logstash-rabbitmq"
       exchange_type => "direct"
