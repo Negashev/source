@@ -4,7 +4,7 @@ input {
     durable => true
     key => "logstash"
     exchange => "logstash-rabbitmq"
-    threads => 4
+    threads => 8
     prefetch_count => 50
     host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"
     user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"
