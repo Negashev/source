@@ -19,11 +19,11 @@ filter {
 output {
   redis {
     host => "{{ default .Env.REDIS_HOST "redis" }}"
-    port => 6379
-    threads => 16
-    key => "logstash"
     data_type => "list"
-    codec => json
-    batch_count => 10000
+    key => "logstash"
+    workers => 16
+    batch => true
+    batch_events => 1000
+    batch_timeout => 5
   }
 }
