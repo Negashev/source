@@ -8,12 +8,12 @@ filter {
   csv {
     separator => "	"
   }
+  grok {
+    match => ["path","%{GREEDYDATA}/%{GREEDYDATA:type}/%{GREEDYDATA:filename}"]
+  }
   mutate
   {
-    remove_field => [ "message", "@version"]
-  }
-  grok {
-    match => ["path","%{GREEDYDATA}/%{GREEDYDATA:filename}"]
+    remove_field => [ "message", "@version", "path"]
   }
 }
 output {
