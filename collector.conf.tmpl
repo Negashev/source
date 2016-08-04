@@ -17,13 +17,15 @@ filter {
   }
 }
 output {
-  redis {
-    host => "{{ default .Env.REDIS_HOST "redis" }}"
-    data_type => "list"
-    key => "logstash"
-    workers => 16
-    batch => true
-    batch_events => 10000
-    batch_timeout => 5
-  }
+  rabbitmq {		
+     exchange => "logstash-rabbitmq"		
+     exchange_type => "direct"		
+     key => "logstash"		
+     host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"		
+     user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"		
+     password => "{{ default .Env.RABBITMQ_PASS "passw0rd" }}"		
+     workers => 8		
+     durable => true		
+     persistent => true		
+   }
 }
