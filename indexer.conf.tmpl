@@ -1,12 +1,14 @@
 input {
-  redis {
-    host => "{{ default .Env.REDIS_HOST "redis" }}"
-    port => 6379
-    threads => 16
+  rabbitmq {
+    queue => "logstash-queue"
+    durable => true
     key => "logstash"
-    data_type => "list"
-    codec => json
-    batch_count => 10000
+    exchange => "logstash-rabbitmq"
+    threads => 8
+    prefetch_count => 50
+    host => "{{ default .Env.RABBITMQ_HOST "rabbitmq" }}"
+    user => "{{ default .Env.RABBITMQ_USER "rabbitmq" }}"
+    password => "{{ default .Env.RABBITMQ_PASS "passw0rd" }}"
   }
 }
 output {
