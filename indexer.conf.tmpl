@@ -12,7 +12,7 @@ input {
 output {
   file {				
     message_format => "%{[column1]}	%{[column2]}	%{[column3]}	%{[column4]}	%{[column5]}	%{[column6]}	%{[column8]}"				
-    path => "/load/%{filename}_%{host}"				
-    flush_interval => 1
+    path => "/load/%{filename}"				
+    flush_interval => 10
   }
 }
