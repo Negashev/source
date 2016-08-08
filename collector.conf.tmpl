@@ -1,7 +1,7 @@
 input {
   file {
     path => "/load/*/*"
-    discover_interval => 1
+    discover_interval => 20
   }
 }
 filter {
@@ -23,7 +23,7 @@ output {
      key => "logstash"
      workers => 16
      batch => true
-     batch_events => 10000
+     batch_events => 20000
      batch_timeout => 5
   }
 }
