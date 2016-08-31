@@ -15,7 +15,6 @@ filter {
 output {
     elasticsearch {
         action => "index"
-        protocol => "http"
         hosts => ["{{ default .Env.ES_HOST "es" }}"]
         port => "{{ default .Env.ES_PORT "9200" }}"
         index => "location"
