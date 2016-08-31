@@ -16,7 +16,7 @@ output {
     elasticsearch {
         action => "index"
         protocol => "http"
-        host => "{{ default .Env.ES_HOST "es" }}"
+        hosts => ["{{ default .Env.ES_HOST "es" }}"]
         port => "{{ default .Env.ES_PORT "9200" }}"
         index => "location"
         workers => 4
