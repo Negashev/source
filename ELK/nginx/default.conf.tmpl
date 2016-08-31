@@ -40,14 +40,12 @@ http {
     expires -1;
     
     location ~ ^/es.*$ {
-      #set $backend_upstream "http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }}";
-      proxy_pass {{ default .Env.KOPF_ES_SERVERS "es:9200" }};
+      proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }};
       rewrite ^/es(.*) /$1 break;
     }
   
     location ~ ^/.*$ {
-      #set $backend_upstream "http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }}";
-      proxy_pass {{ default .Env.KOPF_ES_SERVERS "es:9200" }};
+      proxy_pass http://{{ default .Env.KOPF_ES_SERVERS "es:9200" }};
       rewrite ^/(.*) /_plugin/kopf/$1 break;
     }
   }
