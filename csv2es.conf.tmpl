@@ -18,7 +18,5 @@ output {
         hosts => ["{{ default .Env.ES_HOST "es" }}"]
         index => "location"
         workers => 4
-        user => "{{ default .Env.ES_USER "user" }}"
-        password => "{{ default .Env.ES_PASS "password" }}"
     }
 }
