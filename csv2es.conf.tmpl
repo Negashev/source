@@ -7,7 +7,7 @@ input {
 
 filter {
     csv {
-        columns => [{{ default .Env.COLUMNS "'one','two','three'" }}]
+        columns => ["one","two","three"]
         separator => ";"
     }
 }
