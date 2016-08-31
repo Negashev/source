@@ -1,0 +1,26 @@
+input {
+      file {
+          path => ["/log/*"]
+          start_position => "beginning"
+      }
+}
+
+filter {
+    csv {
+        columns => [{{ default .Env.COLUMNS "'one','two','three'" }}]
+        separator => ";"
+    }
+}
+
+output {
+    elasticsearch {
+        action => "index"
+        protocol => "http"
+        host => "{{ default .Env.ES_HOST "es" }}"
+        port => "{{ default .Env.ES_PORT "9200" }}"
+        index => "location"
+        workers => 4
+        "user" => "{{ default .Env.ES_USER "user" }}"
+        "password" => "{{ default .Env.ES_PASS "password" }}"
+    }
+}
