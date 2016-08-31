@@ -20,7 +20,7 @@ output {
         port => "{{ default .Env.ES_PORT "9200" }}"
         index => "location"
         workers => 4
-        "user" => "{{ default .Env.ES_USER "user" }}"
-        "password" => "{{ default .Env.ES_PASS "password" }}"
+        user => "{{ default .Env.ES_USER "user" }}"
+        password => "{{ default .Env.ES_PASS "password" }}"
     }
 }
