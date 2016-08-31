@@ -10,6 +10,9 @@ filter {
         columns => ["one","two","three"]
         separator => ";"
     }
+    mutate {
+        remove => [ "message", "host", "@version","path"] 
+    }
 }
 
 output {
