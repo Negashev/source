@@ -16,7 +16,7 @@ output {
     elasticsearch {
         action => "index"
         hosts => ["{{ default .Env.ES_HOST "es" }}"]
-        index => "location"
+        index => "{{ default .Env.INDEX "index" }}"
         workers => 4
     }
 }
