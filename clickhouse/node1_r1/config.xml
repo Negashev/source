@@ -102,7 +102,6 @@
     <!-- ZooKeeper is used to store metadata about replicas, when using Replicated tables.
          Optional. If you don't use replicated tables, you could omit that.
          See https://clickhouse.yandex/reference_en.html#Data%20replication
-      -->
     <zookeeper>
         <node index="1">
             <host>node1</host>
@@ -113,6 +112,7 @@
             <port>2181</port>
         </node>
     </zookeeper>
+      -->
 
     <!-- Substitutions for parameters of replicated tables.
           Optional. If you don't use replicated tables, you could omit that.
