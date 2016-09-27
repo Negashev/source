@@ -5,9 +5,6 @@ input {
   }
 }
 filter {
-  csv {
-    separator => "	"
-  }
   grok {
     match => ["path","%{GREEDYDATA}/%{GREEDYDATA:type}/%{GREEDYDATA:filename}"]
   }
@@ -18,12 +15,14 @@ filter {
 }
 output {
   redis {
-     host => "{{ default .Env.REDIS_HOST "redis" }}"
-     data_type => "list"
-     key => "logstash"
-     workers => 16
-     batch => true
-     batch_events => 20000
-     batch_timeout => 5
+    host => "{{ default .Env.REDIS_HOST "redis" }}"
+    data_type => "list"
+    key => "logstash"
+    workers => 16
+    batch => true
+    congestion_interval => 1
+    congestion_threshold => 20000000
+    batch_events => 50
+    batch_timeout => 5
   }
 }
