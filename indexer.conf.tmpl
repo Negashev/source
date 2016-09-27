@@ -11,7 +11,7 @@ input {
 }
 output {
   elasticsearch {
-    host => "elasticsearch"
+    hosts => ["elasticsearch"]
     protocol => "http"
     index => "logstash-%{+YYYY.MM.dd.HH.mm}"
     workers => "16"
