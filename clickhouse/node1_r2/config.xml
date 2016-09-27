@@ -68,7 +68,7 @@
         <teleport>
             <shard>
                 <weight>1</weight>
-                <internal_replication>false</internal_replication>
+                <internal_replication>true</internal_replication>
                 <replica>
                     <host>node1-r1</host>
                     <port>9000</port>
@@ -80,7 +80,7 @@
             </shard>
             <shard>
                 <weight>1</weight>
-                <internal_replication>false</internal_replication>
+                <internal_replication>true</internal_replication>
                 <replica>
                     <host>node2-r1</host>
                     <port>9000</port>
