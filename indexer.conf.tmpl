@@ -2,7 +2,7 @@ input {
   redis {
     host => "{{ default .Env.REDIS_HOST "redis" }}"
     port => 6379
-    threads => 32
+    threads => 16
     key => "logstash"
     data_type => "list"
     codec => json
@@ -11,8 +11,8 @@ input {
 }
 output {
   elasticsearch {
-    hosts => "elasticsearch"
+    host => "elasticsearch"
     index => "logstash-%{filename}"
-    workers => 32
+    workers => 16
   }
 }
