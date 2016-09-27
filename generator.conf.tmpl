@@ -5,7 +5,6 @@ input {
       "line 2",
       "line 3"
     ]
-    # Emit all lines 3 times.
     count => 3
   }
 }
@@ -13,7 +12,7 @@ output {
   elasticsearch {
     host => "elasticsearch"
     protocol => "http"
-    index => "logstash-%{filename}"
+    index => "logstash-%{+YYYY_MM_dd_HH_mm}"
     workers => 8
   }
 }
