@@ -6,13 +6,13 @@ input {
     key => "logstash"
     data_type => "list"
     codec => json
-    batch_count => 25000
+    batch_count => 20000
   }
 }
 output {
   elasticsearch {
     hosts => "elasticsearch"
-    index => "logstash-%{+YYYY.MM.dd.HH.mm}"
+    index => "logstash-%{filename}"
     workers => 32
   }
 }
