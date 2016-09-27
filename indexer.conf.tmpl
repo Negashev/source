@@ -2,7 +2,7 @@ input {
   redis {
     host => "{{ default .Env.REDIS_HOST "redis" }}"
     port => 6379
-    threads => 16
+    threads => 32
     key => "logstash"
     data_type => "list"
     codec => json
