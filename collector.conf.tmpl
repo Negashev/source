@@ -5,6 +5,10 @@ input {
   }
 }
 filter {
+  csv {
+    separator => "	"
+  }
+
   grok {
     match => ["path","%{GREEDYDATA}/%{GREEDYDATA:type}/%{GREEDYDATA:filename}"]
   }
