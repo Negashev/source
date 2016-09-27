@@ -20,7 +20,7 @@ filter {
 output {
   elasticsearch {
     host => "elasticsearch"
-    protocol => "http"
+    protocol => "transport"
     index => "logstash-%{filename}"
     workers => 8
     max_retries => 10
