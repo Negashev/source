@@ -13,6 +13,6 @@ output {
   elasticsearch {
     hosts => "elasticsearch"
     index => "logstash-%{+YYYY.MM.dd.HH.mm}"
-    workers => 8
+    workers => 16
   }
 }
