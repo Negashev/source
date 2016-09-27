@@ -5,8 +5,10 @@ input {
     threads => 16
     key => "logstash"
     data_type => "list"
-    codec => json
-    batch_count => 20000
+    workers => 16
+    batch => true
+    batch_events => 1000
+    batch_timeout => 5
   }
 }
 output {
