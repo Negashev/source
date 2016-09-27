@@ -1,0 +1,27 @@
+input {
+  file {
+    path => "/load/*/*"
+    discover_interval => 2
+  }
+}
+filter {
+  csv {
+    separator => "	"
+  }
+
+  grok {
+    match => ["path","%{GREEDYDATA}/%{GREEDYDATA:type}/%{GREEDYDATA:filename}"]
+  }
+  mutate
+  {
+    remove_field => [ "message", "@version", "path"]
+  }
+}
+output {
+  elasticsearch {
+    host => "elasticsearch"
+    protocol => "http"
+    index => "logstash-%{filename}"
+    workers => 8
+  }
+}
