@@ -13,7 +13,7 @@ output {
   elasticsearch {
     host => "elasticsearch"
     protocol => "http"
-    index => "logstash-%{filename}"
+    index => "logstash-%{+YYYY_MM_dd_HH_mm}"
     workers => 8
   }
 }
