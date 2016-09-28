@@ -1,18 +1,29 @@
 input {
   generator {
-    lines => [
-      "line 1",
-      "line 2",
-      "line 3"
-    ]
+    message => "test|2test|3test|4test|5test|6test|7test|8test|9test|0test"
     count => 1000000
     threads => 24
   }
 }
+filter {
+  csv {
+    separator => "|"
+  }
+  mutate
+  {
+    remove_field => [ "message", "@version"]
+  }
+}
 output {
-  elasticsearch {
-    hosts => "elasticsearch"
-    index => "logstash-%{+YYYY_MM_dd_HH_mm}"
-    workers => 8
+  redis {
+    host => "{{ default .Env.REDIS_HOST "redis" }}"
+    data_type => "list"
+    key => "logstash"
+    workers => 16
+    batch => true
+    congestion_interval => 1
+    congestion_threshold => 20000000
+    batch_events => 10000
+    batch_timeout => 5
   }
 }
