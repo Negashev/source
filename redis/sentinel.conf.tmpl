@@ -4,7 +4,7 @@ port 26379
 
 dir /tmp
 
-sentinel monitor mymaster redis-master 6379 {{ default .Env.SENTINEL_QUORUM "2" }}
+sentinel monitor mymaster {{ default .Env.REDIS_MASTER "redis-master" }} 6379 {{ default .Env.SENTINEL_QUORUM "2" }}
 
 sentinel down-after-milliseconds mymaster {{ default .Env.SENTINEL_DOWN_AFTER "30000" }}
 
