@@ -1,7 +1,6 @@
 port 6378
 {{ if .Env.PASS }}
 requirepass {{ .Env.PASS }}
-masterauth {{ .Env.PASS }}
 {{end}}
 cluster-enabled yes
 cluster-config-file nodes.conf
