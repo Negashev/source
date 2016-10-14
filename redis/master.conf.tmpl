@@ -1,5 +1,5 @@
 port 6379
-protected mode no
+protected-mode no
 {{ if .Env.PASS }}
 requirepass {{ .Env.PASS }}
 masterauth {{ .Env.PASS }}
