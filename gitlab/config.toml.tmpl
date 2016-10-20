@@ -1,0 +1,33 @@
+concurrent = 1
+check_interval = 0
+
+[[runners]]
+  name = "{{ default .Env.NAME "gitlab-runner-name" }}"
+  url = "{{ default .Env.URL "https://gitlab.com/ci" }}"
+  token = "{{ .Env.TOKEN }}"
+  executor = "shell"
+  [runners.ssh]
+  [runners.docker]
+    tls_verify = false
+    image = ""
+    privileged = false
+    disable_cache = false
+  [runners.parallels]
+    base_name = ""
+    disable_snapshots = false
+  [runners.virtualbox]
+    base_name = ""
+    disable_snapshots = false
+  [runners.cache]
+  [runners.kubernetes]
+    host = ""
+    cert_file = ""
+    key_file = ""
+    ca_file = ""
+    image = ""
+    namespace = ""
+    privileged = false
+    cpus = ""
+    memory = ""
+    service_cpus = ""
+    service_memory = ""
