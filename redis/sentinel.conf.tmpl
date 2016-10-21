@@ -1,6 +1,11 @@
 # Example sentinel.conf can be downloaded from http://download.redis.io/redis-stable/sentinel.conf
 
 port 26379
+protected-mode no
+{{ if .Env.PASS }}
+requirepass {{ .Env.PASS }}
+masterauth {{ .Env.PASS }}
+{{end}}
 
 dir /tmp
 
