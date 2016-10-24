@@ -3,6 +3,7 @@
 port 26379
 protected-mode no
 {{ if .Env.PASS }}
+sentinel auth-pass mymaster {{ .Env.PASS }}
 requirepass {{ .Env.PASS }}
 masterauth {{ .Env.PASS }}
 {{end}}
