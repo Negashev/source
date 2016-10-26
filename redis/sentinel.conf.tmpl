@@ -2,13 +2,7 @@
 
 port 26379
 protected-mode no
-{{ if .Env.PASS }}
-sentinel auth-pass mymaster {{ .Env.PASS }}
-requirepass {{ .Env.PASS }}
-masterauth {{ .Env.PASS }}
-{{end}}
 
-dir /tmp
 
 sentinel monitor mymaster {{ default .Env.REDIS_MASTER "redis-master" }} 6379 {{ default .Env.SENTINEL_QUORUM "2" }}
 
@@ -17,3 +11,9 @@ sentinel down-after-milliseconds mymaster {{ default .Env.SENTINEL_DOWN_AFTER "3
 sentinel parallel-syncs mymaster 1
 
 sentinel failover-timeout mymaster {{ default .Env.SENTINEL_FAILOVER "180000" }}
+{{ if .Env.PASS }}
+sentinel auth-pass mymaster {{ .Env.PASS }}
+requirepass {{ .Env.PASS }}
+{{end}}
+
+dir /tmp
