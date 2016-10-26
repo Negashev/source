@@ -5,4 +5,4 @@ sentinel auth-pass mymaster {{ .Env.PASS }}
 {{end}}
 sentinel down-after-milliseconds mymaster 3000
 sentinel failover-timeout mymaster 6000
-sentinel parallel-syncs mymaster 6379 1
+sentinel parallel-syncs mymaster 1
