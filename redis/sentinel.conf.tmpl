@@ -1,18 +1,8 @@
-# Example sentinel.conf can be downloaded from http://download.redis.io/redis-stable/sentinel.conf
-
 port 26379
-protected-mode no
-
-
-sentinel monitor mymaster {{ default .Env.REDIS_MASTER "redis-master" }} 6379 {{ default .Env.SENTINEL_QUORUM "2" }}
-
-sentinel down-after-milliseconds mymaster {{ default .Env.SENTINEL_DOWN_AFTER "30000" }}
-
-sentinel parallel-syncs mymaster 1
-
-sentinel failover-timeout mymaster {{ default .Env.SENTINEL_FAILOVER "180000" }}
+sentinel monitor master01 redis-master 6379 1
 {{ if .Env.PASS }}
 sentinel auth-pass mymaster {{ .Env.PASS }}
 {{end}}
-
-dir /tmp
+sentinel down-after-milliseconds mymaster 3000
+sentinel failover-timeout mymaster 6000
+sentinel parallel-syncs mymaster 6379 1
