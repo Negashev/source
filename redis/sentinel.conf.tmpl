@@ -13,7 +13,6 @@ sentinel parallel-syncs mymaster 1
 sentinel failover-timeout mymaster {{ default .Env.SENTINEL_FAILOVER "180000" }}
 {{ if .Env.PASS }}
 sentinel auth-pass mymaster {{ .Env.PASS }}
-requirepass {{ .Env.PASS }}
 {{end}}
 
 dir /tmp
