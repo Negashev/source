@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<yandex>
+	<users>
+		<signal replace="replace">
+			<password>{{ default  .Env.CH_SIGNAL_PASSWORD "" }}</password>
+            <profile>web</profile>
+            <quota>default</quota>
+			<networks>
+                <ip>::/0</ip>
+            </networks>
+		</signal>
+	</users>
+</yandex>
