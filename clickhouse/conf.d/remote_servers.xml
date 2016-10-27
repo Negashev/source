@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<yandex>
+	<remote_servers replace="replace">
+		<teleport>
+			<shard>
+				<weight>1</weight>
+				<internal_replication>true</internal_replication>
+				<replica>
+					<host>ch-s1-r1</host>
+					<port>9000</port>
+				</replica>
+				<replica>
+					<host>ch-s1-r2</host>
+					<port>9000</port>
+				</replica>
+			</shard>
+		</teleport>
+	</remote_servers>
+</yandex>
