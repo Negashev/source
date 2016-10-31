@@ -46,7 +46,7 @@
             <max_ast_depth>50</max_ast_depth>
             <max_ast_elements>100</max_ast_elements>
 
-            <readonly>1</readonly>
+            <readonly>0</readonly>
         </web>
     </profiles>
 
