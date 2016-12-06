@@ -15,5 +15,19 @@
 				</replica>
 			</shard>
 		</teleport>
+		<teleport_logs>
+			<shard>
+				<replica>
+					<host>ch-s1-r1</host>
+					<port>9000</port>
+				</replica>
+			</shard>
+			<shard>
+				<replica>
+					<host>ch-s1-r2</host>
+					<port>9000</port>
+				</replica>
+			</shard>
+		</teleport_logs>
 	</remote_servers>
 </yandex>
