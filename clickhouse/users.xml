@@ -44,7 +44,7 @@
             <max_subquery_depth>2</max_subquery_depth>
             <max_pipeline_depth>25</max_pipeline_depth>
             <max_ast_depth>50</max_ast_depth>
-            <max_ast_elements>100</max_ast_elements>
+            <max_ast_elements>1000</max_ast_elements>
 
             <readonly>0</readonly>
         </web>
