@@ -2,7 +2,7 @@
 <yandex>
 	<zookeeper replace="replace">
         <node index="1">
-            <host>{{ default .Env.CH_ZOOKEEPER "zookeeper" }}</host>
+            <host>{{ default .Env.CH_ZOOKEEPER "zk.zookeeper" }}</host>
             <port>2181</port>
         </node>
     </zookeeper>
