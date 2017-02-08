@@ -50,7 +50,7 @@ case "$SENSU_SERVICE" in
 
     for INDEX in $DEPENDENCIES
     do
-      envtpl -in /etc/sensu/templates/${INDEX}.json.tmpl > $CONFIG_DIR/${INDEX}.json
+      CLIENT_ADDRESS=${CLIENT_ADDRESS} envtpl -in /etc/sensu/templates/${INDEX}.json.tmpl > $CONFIG_DIR/${INDEX}.json
     done
 
     # Generate key/cert files if RABBITMQ_SSL_SUPPORT = true
