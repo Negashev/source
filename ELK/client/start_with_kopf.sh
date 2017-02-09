@@ -1,3 +1,3 @@
 #!/bin/bash
 sysctl -w vm.max_map_count=262144
-/docker-entrypoint.sh elasticsearch
+/docker-entrypoint.sh "$@"
