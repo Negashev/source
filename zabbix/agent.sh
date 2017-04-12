@@ -17,7 +17,11 @@ log() {
 
 ### Update config file based on environment variables
 update_config() {
-    log "Updating configuration file..."
+    log "Updating configuration file..."    
+    if [ ! -z "$TIMEOUT" ]; then
+      log "Changing Timeout to ${bold}${white}${TIMEOUT}${reset}"
+      sed -i 's/^[# ]*Timeout=.*$/Timeout='$TIMEOUT'/g' ${TARGET_CONFIG_FILE}
+    fi
     if [ ! -z "$ZABBIX_SERVER" ]; then
       log "Changing Zabbix Server IP to ${bold}${white}${ZABBIX_SERVER}${reset}"
       sed -i 's/^[# ]*Server=.*$/Server='$ZABBIX_SERVER'/g' ${TARGET_CONFIG_FILE}
