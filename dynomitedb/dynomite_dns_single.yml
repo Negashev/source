@@ -1,6 +1,4 @@
 dyn_o_mite:
- datacenter: dc
- rack: rack1
  dyn_listen: 0.0.0.0:8101
  dyn_seed_provider: dns_provider
  listen: 0.0.0.0:8102
