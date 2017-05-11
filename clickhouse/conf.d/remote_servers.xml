@@ -12,10 +12,6 @@
 				<replica>
 					<host>ch-s1-r2</host>
 					<port>9000</port>
-				</replica>				
-				<replica>
-					<host>ch-s1-r3</host>
-					<port>9000</port>
 				</replica>
 			</shard>
 		</teleport>
@@ -29,12 +25,6 @@
 			<shard>
 				<replica>
 					<host>ch-s1-r2</host>
-					<port>9000</port>
-				</replica>
-			</shard>
-			<shard>
-				<replica>
-					<host>ch-s1-r3</host>
 					<port>9000</port>
 				</replica>
 			</shard>
